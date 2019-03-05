@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+  <!-- Content page -->
+  <section class="bgwhite p-t-55 p-b-65">
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+
+     </div>
+     <div class="row">
+         {% for p in pro %}
+          <div class="col 6 m4">
+           <div class="card-panel hoverable">
+            <div class="card">
+             <img src="{{ asset('devis/' ~ p.produit.devisName1) }}" height="350px">
+             
+             <span class="block2-newprice m-text8 p-r-5"><i ></i> -{{ p.pourcentage }} %</span>
+             <div class="card-content">
+              <div class="d-flex no-block align-items-center m-b-15">
+               <span><i ></i> {{ p.nomPromotion }}</span>
+
+               <div class="ml-auto">
+
+                <a href="javascript:void(0)" class="link"><span class="block2-newprice m-text8 p-r-5"><i ></i></i>  Jusqu'au {{ p.dateFin |date('Y-m-d')}}</a>
+               </div>
+              </div>
+
+              <span class="block2-oldprice m-text7 p-r-5">
+										{{ p.prixInitiale }}DT
+									</span>
+              <span class="block2-newprice m-text8 p-r-5">
+										 {{ p.prixPromo }}DT
+									</span>
+             </div>
+            </div>
+           </div>
+          </div>
+         {% else %}
+          <tr>
+           <td colspan="3"> </td>
+          </tr>
+         {% endfor %}
+     </div>
+
+   </div>
+  </section>
+
+
+
+
+
+
+
+
+ {% endblock home %}

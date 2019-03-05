@@ -1,0 +1,115 @@
+services_homepage:
+    path:     /
+    defaults: { _controller: ServicesBundle:Default:index }
+
+
+
+afficheReclamation:
+    path:     /AfficheReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:Affiche }
+AddReclamation:
+    path:     /AddReclamation/{type}
+    defaults: { _controller: ServicesBundle:Reclamation:add }
+AddOtherReclamation:
+    path:     /AddOtherReclamation/{type}
+    defaults: { _controller: ServicesBundle:Reclamation:addOther }
+ListReclamation:
+    path:     /ListReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:List }
+DeleteReclamation:
+    path:     /DeleteReclamation/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:Delete }
+UpdateReclamation:
+    path:     /UpdateReclamation/{id}/{type}
+    defaults: { _controller: ServicesBundle:Reclamation:Update }
+
+
+
+ShowReclamationBO:
+    path:     /BO/ShowReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:Show }
+ShowReclamationBO_Readed:
+    path:     /BO/ShowReadedReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:ShowReaded }
+ShowReclamationBO_UNReaded:
+    path:     /BO/ShowUNReadedReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:ShowUNReaded }
+ShowReclamationBO_Important:
+    path:     /BO/ShowImportantReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:ShowImportant }
+ShowReclamationBO_Trash:
+    path:     /BO/ShowTrashReclamation
+    defaults: { _controller: ServicesBundle:Reclamation:ShowTrash }
+ShowOneReclamationBO:
+    path:     /BO/ShowOneReclamation/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:ShowOne }
+SetAsImportant:
+    path:     /BO/ShowImportantReclamation/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:SetAsImportant }
+SendToTrash:
+    path:     /BO/ShowTrashReclamation/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:SendToTrash }
+ProfileReclamation:
+    path:     /BO/ProfileReclamation/{username}
+    defaults: { _controller: ServicesBundle:Reclamation:ProfileReclamation }
+
+BanUser:
+    path:     /BO/BanUser/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:BanUser }
+
+DeleteReclamationBO:
+    path:     /DeleteReclamationBO/{id}
+    defaults: { _controller: ServicesBundle:Reclamation:DeleteBO }
+
+
+emptyforuser:
+     path:     /BO/searchajax/{valeur}
+     defaults: { _controller: ServicesBundle:Reclamation:searchuserempty }
+
+emptyforreclamation:
+     path:     /searchreclamationajax/{valeur}
+     defaults: { _controller: ServicesBundle:Reclamation:searchreclamationempty }
+
+afficheUserBO:
+    path:     /BO/AfficheUtilisateur
+    defaults: { _controller: ServicesBundle:Reclamation:ListUtilisateur }
+afficheUserBANNEDBO:
+    path:     /BO/afficheUserBANNEDBO
+    defaults: { _controller: ServicesBundle:Reclamation:ListUtilisateurBanned }
+
+
+
+
+
+ListWishList:
+    path:     /ListWishList
+    defaults: { _controller: ServicesBundle:WishList:List }
+
+DeleteProductWishList:
+    path:     /DeleteProductWishList/{id}
+    defaults: { _controller: ServicesBundle:WishList:Delete }
+
+AddToWishList:
+    path:     /AddToWishList/{id}
+    defaults: { _controller: ServicesBundle:WishList:Add }
+
+
+
+SimilarWishList:
+    path:     /SimilarWishList/{prodid}
+    defaults: { _controller: ServicesBundle:WishList:Similar }
+
+
+emptyforwishlist:
+     path:     /searchwishlistajax/{valeur}
+     defaults: { _controller: ServicesBundle:WishList:searchwishlistempty}
+
+
+
+
+
+
+
+
+
+

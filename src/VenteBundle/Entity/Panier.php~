@@ -1,0 +1,163 @@
+<?php
+
+namespace VenteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Panier
+ *
+ * @ORM\Table(name="panier")
+ * @ORM\Entity(repositoryClass="VenteBundle\Repository\PanierRepository")
+ */
+class Panier
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="qtpanier", type="integer")
+     */
+    private $qtpanier;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ProduitBundle\Entity\Produit")
+     * @ORM\JoinColumn(name="IdProduit", referencedColumnName="id")
+     *
+     */
+    private $Produit;
+    /**
+     * @ORM\ManyToOne(targetEntity="PepiniereBundle\Entity\user")
+     * @ORM\JoinColumn(name="IdUser", referencedColumnName="id")
+     *
+     */
+    private $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="VenteBundle\Entity\Livraison")
+     * @ORM\JoinColumn(name="IdLivraison", referencedColumnName="id")
+     *
+     */
+    private $Livraison;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="valid", type="boolean")
+     */
+    private $valid;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set valid
+     *
+     * @param boolean $valid
+     *
+     * @return Panier
+     */
+    public function setValid($valid)
+    {
+        $this->valid = $valid;
+    
+        return $this;
+    }
+
+    /**
+     * Get valid
+     *
+     * @return boolean
+     */
+    public function getValid()
+    {
+        return $this->valid;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \ProduitBundle\Entity\Produit $produit
+     *
+     * @return Panier
+     */
+    public function setProduit(\ProduitBundle\Entity\Produit $produit = null)
+    {
+        $this->Produit = $produit;
+    
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \ProduitBundle\Entity\Produit
+     */
+    public function getProduit()
+    {
+        return $this->Produit;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \PepiniereBundle\Entity\user $user
+     *
+     * @return Panier
+     */
+    public function setUser(\PepiniereBundle\Entity\user $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \PepiniereBundle\Entity\user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set qtpanier
+     *
+     * @param integer $qtpanier
+     *
+     * @return Panier
+     */
+    public function setQtpanier($qtpanier)
+    {
+        $this->qtpanier = $qtpanier;
+    
+        return $this;
+    }
+
+    /**
+     * Get qtpanier
+     *
+     * @return integer
+     */
+    public function getQtpanier()
+    {
+        return $this->qtpanier;
+    }
+
+   }

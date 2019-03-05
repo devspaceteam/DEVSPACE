@@ -1,0 +1,141 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Reclamation<small>{{ nbunread.x }} new </small></h1>
+      <ol class="breadcrumb"><li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li><li class="active">Raclamation</li></ol>
+    </section>
+
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Folders</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li >
+                  <a href="{{ path('ShowReclamationBO') }}"><i class="fa fa-inbox"></i> All<span class="label label-primary pull-right">{{ nbunread.x+nbread.x }}</span></a></li>
+                <li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_UNReaded') }}"><i class="fa fa-inbox"></i> Unreaded<span class="label label-primary pull-right">{{ nbunread.x }}</span></a></li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Readed') }}"><i class="fa fa-filter"></i> Readed <span class="label label-warning pull-right">{{ nbread.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">To Ban</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Important') }}"><i class="fa fa-circle-o text-red"></i> Important<span class="label label-warning pull-right">{{ important.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Managed</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Trash') }}"></i> Trash<span class="label label-warning pull-right">{{ trash.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-md-9">
+          <div class="box box-primary">
+
+                <ul class="nav nav-tabs">
+                  <li><a  data-toggle="tab">Profile</a></li>
+                </ul>
+
+<br>
+
+
+                  <div class="tab-pane" id="settings">
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">UserName : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.username }}</label>
+
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">Email : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.email }}</label>
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">About :</label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.about }}</label>
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">Phone Number : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.phoneNumber }}</label>
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">Location : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.location }}</label>
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">Address : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.address }}</label>
+                      </div>
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label">Job : </label>
+                        <label class="col-sm-1 control-label">&nbsp&nbsp&nbsp {{ profile.job }}</label>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <a href="{{ path('BanUser',{"id":profile.id}) }}">
+                            <button  type="button" class="btn btn-danger">
+                                {% if(profile.nbban<3) %}
+                                  Ban Utilisateur
+                                {% else %}
+                                  Supprimer Utilisateur
+                                {% endif %}
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+
+                      <br>
+                    </form>
+                  </div>
+
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

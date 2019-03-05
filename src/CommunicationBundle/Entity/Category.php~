@@ -1,0 +1,129 @@
+<?php
+
+namespace CommunicationBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="CommunicationBundle\Repository\CategoryRepository")
+ */
+class Category
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $slug;
+
+    /**
+     * @var int
+     */
+    private $postCount = 0;
+
+
+
+//    /**
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getPosts(): \Doctrine\Common\Collections\Collection
+//    {
+//        return $this->posts;
+//    }
+//
+//    /**
+//     * @param \Doctrine\Common\Collections\Collection $posts
+//     */
+//    public function setPosts(\Doctrine\Common\Collections\Collection $posts)
+//    {
+//        $this->posts = $posts;
+//    }
+
+
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+
+    }
+
+
+
+//    /**
+//     * Add post
+//     *
+//     * @param \CommunicationBundle\Entity\BlogPost $blog_post
+//     *
+//     * @return Category
+//     */
+//    public function addPost(\CommunicationBundle\Entity\BlogPost $blog_post)
+//    {
+//        $this->posts[] = $blog_post;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove post
+//     *
+//     * @param \CommunicationBundle\Entity\BlogPost $blog_post
+//     */
+//    public function removePost(\CommunicationBundle\Entity\BlogPost $blog_post)
+//    {
+//        $this->posts->removeElement($blog_post);
+//    }
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+
+//    /**
+//     * Add post
+//     *
+//     * @param \CommunicationBundle\Entity\BlogPost $post
+//     *
+//     * @return Category
+//     */
+//    public function addPost(\CommunicationBundle\Entity\BlogPost $post)
+//    {
+//        $this->posts[] = $post;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove post
+//     *
+//     * @param \CommunicationBundle\Entity\BlogPost $post
+//     */
+//    public function removePost(\CommunicationBundle\Entity\BlogPost $post)
+//    {
+//        $this->posts->removeElement($post);
+//    }
+
+
+}

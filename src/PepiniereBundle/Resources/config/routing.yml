@@ -1,0 +1,22 @@
+pepiniere_homepage:
+    path:     /
+    defaults: { _controller: PepiniereBundle:Default:home }
+
+pepiniere_homepage2:
+    path:     /BO
+    defaults: { _controller: PepiniereBundle:Default:index1 }
+
+Profile:
+    path:     /BO/Profile
+    defaults: { _controller: PepiniereBundle:Default:index10 }
+
+setunseennotifoffreclamation:
+    path:     /BO/setunseennotifoffreclamation
+    defaults: { _controller: PepiniereBundle:Default:setunseennotifoffreclamation }
+
+setunseennotifoffreclamationforone:
+    path:     /BO/setunseennotifoffreclamationforoneAction/{id}
+    defaults: { _controller: PepiniereBundle:Default:setunseennotifoffreclamationforone }
+setunseennotifoffpromotionforone:
+    path:     /BO/setunseennotifoffpromotionforone/{id}
+    defaults: { _controller: PepiniereBundle:Default:setunseennotifoffpromotionforone }

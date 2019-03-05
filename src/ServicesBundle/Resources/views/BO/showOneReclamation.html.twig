@@ -1,0 +1,134 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Reclamation<small>{{ nbunread.x }} nouveaux </small></h1>
+      <ol class="breadcrumb"><li><a href="#"><i class="fa fa-dashboard"></i> tableau de bord</a></li><li class="active">Raclamation</li></ol>
+    </section>
+
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li >
+                  <a href="{{ path('ShowReclamationBO') }}"><i class="fa fa-inbox"></i> Tout<span class="label label-primary pull-right">{{ nbunread.x+nbread.x }}</span></a></li>
+                <li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_UNReaded') }}"><i class="fa fa-inbox"></i> Non lu<span class="label label-primary pull-right">{{ nbunread.x }}</span></a></li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Readed') }}"><i class="fa fa-filter"></i> Lu <span class="label label-warning pull-right">{{ nbread.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pour être banni</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Important') }}"><i class="fa fa-circle-o text-red"></i> Important<span class="label label-warning pull-right">{{ important.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Géré</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Trash') }}"></i> Poubelle<span class="label label-warning pull-right">{{ trash.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      <div class="col-md-9">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">{{ myreclamation.user.username }}</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.user.email }}</label>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Sujet : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.subject }}</label>
+              </div>
+              <div class="form-group">
+                <area for="exampleInputEmail1">Description : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.description }}</area>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Date : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.date|date }}</label>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Type Utilisateur reclameur : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.type }}</label>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Utilisateur a été réclamé : <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ myreclamation.userToClaim }}</label>
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+                {% if(myreclamation.important==0 and myreclamation.trash==0) %}
+                    <a href="{{ path('SetAsImportant',{"id":myreclamation.id}) }}"><button type="button" class="btn btn-primary"><i class="fa fa-circle-o text-red"></i> Set As Important</button></a>
+                {% elseif(myreclamation.important==1) %}
+                  <label type="button" class="btn"><i class="fa fa-circle-o text-red"></i> Important</label>
+                {% endif %}
+
+              <a href="{{ path('ProfileReclamation',{"username":myreclamation.usertoclaim}) }}"><button type="button" class="btn btn-primary">Utilisateur a été réclamé</button></a>
+              <a href="{{ path('ProfileReclamation',{"username":myreclamation.user.username}) }}"><button type="button" class="btn btn-primary">Profile Utilisateur reclameur</button></a>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

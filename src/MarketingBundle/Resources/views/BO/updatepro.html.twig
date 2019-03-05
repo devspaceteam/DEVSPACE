@@ -1,0 +1,42 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+     <!-- Content Wrapper. Contains page content -->
+     <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <section class="content-header">
+             <h1>
+                 page de modifiaction
+                 <small><a href="{{path("Read")}}">retour</a></small>
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                 <li class="active">Mailbox</li>
+             </ol>
+             <center>
+                 <img src="{{ asset ("dist/img/qqq.jpg")}}" ><br>
+
+                 <h1>page de modifiaction</h1>
+                 {{ form_start(form) }}
+                 <table>
+                     <tr>
+                         <td> nomPromotion: </td><td>  {{ form_widget(form.nomPromotion) }} </td></tr>
+                     <tr> <td> datedebut:</td><td> {{ form_widget(form.dateDebut) }} </td></tr>
+                     <tr> <td> dateFin:</td><td> {{ form_widget(form.dateFin) }} </td></tr>
+                     <tr> <td>pourcentage: </td><td>{{ form_widget(form.pourcentage) }} </td></tr>
+                     <tr><td> produit: </td><td>{{ form_widget(form.produit) }} </td>
+                     <tr>
+                         <td></td>
+                         <td><input type="submit" value="Modifer" class="btn btn-primary btn-block margin-bottom"></td></tr>
+                 </table>
+                 {{ form_end(form) }}
+
+             </center>
+         </section>
+
+         <!-- Main content -->
+
+         <!-- /.content -->
+     </div>
+     <!-- /.content-wrapper -->
+ {% endblock %}

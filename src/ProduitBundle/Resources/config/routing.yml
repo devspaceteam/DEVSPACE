@@ -1,0 +1,52 @@
+produit_homepage:
+    path:     /
+    defaults: { _controller: ProduitBundle:Default:index }
+afficheShop:
+    path:     /afficheShop
+    defaults: { _controller: ProduitBundle:Shop:showFO }
+afficheShopTrieAsc:
+    path:     /afficheShopAsc
+    defaults: { _controller: ProduitBundle:Shop:showFOTrieAsec }
+afficheShopTrieDesc:
+    path:     /afficheShopDesc
+    defaults: { _controller: ProduitBundle:Shop:showFOTrieDesc }
+
+afficheCategorieBO:
+    path:     /BO/AfficheCategorie
+    defaults: { _controller: ProduitBundle:Categorie:show }
+afficheProduitUserBO:
+    path:     /BO/AfficheProduitUser
+    defaults: { _controller: ProduitBundle:Shop:showUser }
+afficheProduitBO:
+    path:     /BO/AfficheProduit
+    defaults: { _controller: ProduitBundle:Shop:show }
+ajouterProduitBO:
+    path:     /BO/AjouterProduit
+    defaults: { _controller: ProduitBundle:Shop:new }
+ajouterCategorieBO:
+    path:     /BO/AjouterCategorie
+    defaults: { _controller: ProduitBundle:Categorie:new }
+SupprimerCategorieBO:
+    path: /SupprimerCategorie
+    defaults: { _controller: ProduitBundle:Categorie:delete}
+SupprimerProduitBO:
+    path: /SupprimerProduit
+    defaults: { _controller: ProduitBundle:Shop:delete}
+ModifierProduitBO:
+    path: /ModifierProduit/{id}
+    defaults: { _controller: ProduitBundle:Shop:update}
+ModifierCategorieBO:
+    path: /ModifierCategorie/{id}
+    defaults: { _controller: ProduitBundle:Categorie:update}
+RechercheProduitBO:
+    path: /RechercheProduit
+    defaults: { _controller: ProduitBundle:Shop:recherche}
+DetailProduit:
+    path: /DetailProduit/{id}
+    defaults: { _controller: ProduitBundle:Shop:detail}
+ProduitSelonCat:
+    path: /ProduitSelonCat/{id}
+    defaults: { _controller: ProduitBundle:Shop:geProduitSelonCat}
+Produitsearcht:
+    path: /Produitsearcht
+    defaults: { _controller: ProduitBundle:Shop:geProduitsearch}

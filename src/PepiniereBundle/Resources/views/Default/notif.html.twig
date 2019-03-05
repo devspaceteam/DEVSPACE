@@ -1,0 +1,43 @@
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+    <i class="fa fa-bell-o"></i>
+    {% if  is_granted('ROLE_ADMIN')%}
+        <span class="label label-warning">{{ notifnb }}</span>{% endif %}
+</a>
+{% if  is_granted('ROLE_ADMIN')%}
+<ul class="dropdown-menu">
+    <li class="header"> Vous avez {{ notifnb }} notifications non lu</li>
+    <li>
+        <!-- inner menu: contains the actual data -->
+        <ul class="menu">
+
+
+            {% for notif in notifications %}
+
+                <li>
+                {% if(notif.title =="Nouvelle Reclamation") %}
+                    <a href="{{ path('setunseennotifoffreclamationforone',{'id':notif.id}) }}">
+                        {% else %}
+                        <a href="{{ path('setunseennotifoffpromotionforone',{'id':notif.id}) }}">
+                            {% endif %}
+                        <i class="fa fa-warning text-yellow"></i>
+                        {{ notif.title }} {{ notif.description }}
+                        <br> &nbsp&nbsp&nbsp Le {{ notif.date|date }}
+                        <i style="color: red">{% if(notif.seen == 1)  %}Vu{% else %} Pas Vu{% endif %}</i>
+                        {% if(notif.title =="Nouvelle Reclamation") %}
+                        <br>Par <B> {{ notif.user1 }}</B>  A Reclamer <b>{{ notif.user2 }}</b>
+                            {% endif %}
+                    </a>
+
+                </li>
+
+            {%  endfor %}
+
+
+
+        </ul>
+    <li class="footer"><a href="{{ path('setunseennotifoffreclamation') }}">Marquer tout comme vue</a></li>
+
+    </li>
+
+</ul>
+{% endif %}

@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+  <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({{ asset("SERVICES/img/wishlist/wishlist.jpg") }});"></section>
+
+     <!------ start Block  add to wishlist------->
+
+
+
+
+
+    <!------ Block end  add to wishlist------->
+
+  <!-- Cart -->
+  <section class="cart bgwhite p-t-70 p-b-100">
+   <div class="container">
+    <!-- Cart item -->
+    <div class="container-table-cart pos-relative">
+     <div class="wrap-table-shopping-cart bgwhite">
+      <table class="table-shopping-cart">
+       <tr class="table-head">
+        <th class="column-1"></th>
+        <th class="column-2">Produit</th>
+        <th class="column-2">Date d'ajout</th>
+        <th class="column-2">Vendeur</th>
+        <th class="column-2" colspan="3" style="text-align: center">Action</th>
+       </tr>
+     {% for l in list %}
+       <tr class="table-row"><td class="column-1"><div class="cart-img-product b-rad-4 o-f-hidden"><img src="{{ asset('devis/' ~ l.Produit.devisName1) }}" alt="IMG-PRODUCT"></div></td>
+        <td class="column-2"><a href="#">{{ l.Produit.nom }}</a></td>
+        <td class="column-2">{{ l.date|date }}</td>
+        <td class="column-2">{{ l.Produit.User.username }}</td>
+        <td class="column-4"><a href="{{path("SimilarWishList",{'prodid':l.Produit.id})}}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"> Similar</button></a></td>
+        <td class="column-4"><a href="{{ path('ajoutaupanier',{'id':l.Produit.id}) }}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Ajouter au panier</button></a></td>
+        <td class="column-4"><a href="{{path("DeleteProductWishList",{'id':l.id})}}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Supprimer</button></a></td>
+       </tr>
+
+     {% endfor %}
+
+      </table>
+     </div>
+    </div>
+
+
+   </div>
+  </section>
+
+
+
+ {% endblock home %}

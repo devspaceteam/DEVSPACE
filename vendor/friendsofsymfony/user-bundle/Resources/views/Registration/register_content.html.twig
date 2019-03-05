@@ -1,0 +1,43 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{{ form_start(form, { 'action': path('fos_user_registration_register'), 'attr': { 'class': 'fos_user_registration_register' } }) }}
+
+
+
+
+
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+    {{ form_widget(form.username, { 'attr': {'class': 'input100'} }) }}
+    <span class="focus-input100" data-placeholder="Username" ></span>
+</div>
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+    {{ form_widget(form.email, { 'attr': {'class': 'input100'} }) }}
+    <span class="focus-input100" data-placeholder="Email" ></span>
+</div>
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+
+    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input100'} }) }}
+    <span class="focus-input100" data-placeholder="Password" ></span>
+
+</div>
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+
+    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input100'} }) }}
+    <span class="focus-input100" data-placeholder="Confirm Password" ></span>
+
+</div>
+
+
+
+
+
+
+<div>
+    <input class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4" type="submit" value="{{ 'registration.submit'|trans }}" />
+</div>
+
+{{ form_end(form) }}

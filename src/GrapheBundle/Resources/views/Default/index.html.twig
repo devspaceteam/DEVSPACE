@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/material-press/html/ltr/page-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Feb 2019 10:17:01 GMT -->
+<head>
+
+ <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("profile/assets/images/favicon.png") }}">
+ <link href="{{ asset("profile/dist/css/style.css") }}" rel="stylesheet">
+
+
+ <!-- Bootstrap & FontAwesome & Entypo CSS -->
+ <link href="{{ asset("profile/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+ <!--[if IE 7]><link type="text/css" rel="stylesheet" href="{{ asset("profile/css/font-awesome-ie7.min.css") }}"><![endif]-->
+ <link href="{{ asset("profile/css/font-entypo.css") }}" rel="stylesheet" type="text/css">
+
+ <!-- Fonts CSS -->
+ <link href="{{ asset("profile/css/fonts.css") }}"  rel="stylesheet" type="text/css">
+ <!-- This page CSS -->
+ <!-- This page CSS -->
+ <link href="{{ asset("profile/assets/libs/sweetalert2/dist/sweetalert2.min.css") }}" rel="stylesheet" type="text/css">
+
+ <link href="{{ asset("profile/assets/libs/toastr/build/toastr.min.css") }}" rel="stylesheet">
+ <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+ <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+ <!--[if lt IE 9]>
+ <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+ <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+ <![endif]-->
+ <!--===========================================PROFILE HEAD========================================-->
+
+
+ <!--[if lt IE 9]>
+ <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+ <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+ <![endif]-->
+</head>
+<body>
+<center>
+<head></head>
+<body>
+<h1>
+ <a href="{{path("Readeve")}}">
+  <i class="fa fa-pie-chart"></i><span>retour</span>
+
+
+
+
+
+
+</h1>
+<div id="div_chart"></div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    {{ gc_draw(piechart, 'div_chart') }}
+</script>
+</body>
+</center>
+<script src="{{ asset("profile/assets/libs/jquery/dist/jquery.min.js") }}"></script>
+<script src="{{ asset("profile/dist/js/materialize.min.js") }}"></script>
+<script src="{{ asset("profile/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js") }}"></script>
+<!-- ============================================================== -->
+<!-- Apps -->
+<!-- ============================================================== -->
+<script src="{{ asset("profile/dist/js/app.js") }}"></script>
+<script src="{{ asset("profile/dist/js/app.init.js") }}"></script>
+<script src="{{ asset("profile/dist/js/app-style-switcher.js") }}"></script>
+<!-- ============================================================== -->
+<!-- Custom js -->
+<!-- ============================================================== -->
+<script src="{{ asset("profile/dist/js/custom.min.js") }}"></script>
+<!-- ============================================================== -->
+<!-- This page plugin js -->
+<!-- ============================================================== -->
+<script src="{{ asset("profile/assets/libs/sweetalert2/dist/sweetalert2.min.js") }}"></script>
+<script src="{{ asset("profile/assets/libs/sweetalert2/sweet-alert.init.js") }}"></script>
+
+<script src="{{ asset("profile/assets/libs/toastr/build/toastr.min.js") }}"></script>
+<script src="{{ asset("profile/assets/extra-libs/toastr/toastr-init.js") }}"></script>
+
+</body>
+</html>
+
+

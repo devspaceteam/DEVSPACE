@@ -1,0 +1,134 @@
+{% extends "base.html.twig" %}
+ {% block home %}
+     <!-- Content page -->
+     <section class="bgwhite p-t-55 p-b-65">
+         <div class="container">
+             <div class="row">
+                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                     <div class="leftbar p-r-20 p-r-0-sm">
+                         <!--  -->
+                         <h4 class="m-text14 p-b-7">
+                             Categories
+                         </h4>
+
+                         <ul class="p-b-54">
+                             {% for c in categorie %}
+                             <li class="p-t-4">
+                                 <a href="{{ path('ProduitSelonCat',{'id':c.id}) }}" class="s-text13 active1">
+                                     {{ c.nom }}
+                                 </a>
+                             </li>
+{% endfor %}
+
+                         </ul>
+
+
+
+
+
+
+                         <div class="search-product pos-relative bo4 of-hidden">
+                             {{ form_start(form) }}
+                             {{ form_widget(form.nom, { 'attr': {'class': "s-text7 size6 p-l-23 p-r-50",'placeholder': "Search Products..."} }) }}
+
+                             <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4" type="submit">
+                                 <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                             </button>
+                             {{ form_end(form) }}
+
+
+
+                         </div>
+
+
+
+
+                     </div>
+                 </div>
+
+                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+                     <!--  -->
+                     <div class="flex-sb-m flex-w p-b-35">
+                         <div class="flex-w">
+                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+                                 <select class="selection-2" onchange="location = this.value;" >
+                                     <option>Tri par default</option>
+                                     <option value="{{path('afficheShopTrieAsc')}}" >Prix croissants</option>
+                                     <option value="{{path('afficheShopTrieDesc')}}" >Prix décroissants</option>
+                                 </select>
+                             </div>
+
+
+                         </div>
+
+                         <span class="s-text8 p-t-5 p-b-5">
+							Showing 1–12 of 16 results
+						</span>
+                     </div>
+                     <!-- Product -->
+                     <div class="row">
+                         {% for p in produit %}
+                         <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+                             <!-- Block2 -->
+                             <div class="block2">
+                                 {% if p.quantite!=0 %}
+                                 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew" >
+                                     {% elseif p.quantite==0 %}
+                                     <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale" >
+                                 {% endif %}
+                                         {# the second parameter is the name of the property with the UploadableField annotation #}
+                                         <img src="{{ asset('devis/' ~ p.devisName1) }}" height="350px">
+
+                                         <div class="block2-overlay trans-0-4">
+
+                                             <div class="block2-btn-addcart w-size1 trans-0-4">
+                                             <!-- Button --><a href="{{path("AddToWishList",{'id':p.id})}}"> <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                        Add To WishList
+                                                     </button></a><br><br>
+                                             {% if p.quantite !=0 %}
+                                             <a href="{{ path('ajoutaupanier',{'id':p.id}) }}"> <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                 Add to Cart
+                                             </button></a>
+                                             {% endif %}
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="block2-txt p-t-20">
+                                     <a href="{{path('DetailProduit',{'id':p.id})}}" class="block2-name dis-block s-text3 p-b-5">
+                                         <b>{{ p.nom }}</b>
+                                     </a>
+
+                                     <span class="block2-price m-text6 p-r-5">
+										${{ p.prix }}
+									</span>
+                                 </div>
+                             </div>
+                         </div>
+
+
+{% endfor %}
+
+
+
+                     </div>
+
+
+                     <!-- Pagination -->
+
+                     <div class="navigation">
+                         {{ knp_pagination_render(produit) }}
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+
+
+
+
+
+
+ {% endblock home %}

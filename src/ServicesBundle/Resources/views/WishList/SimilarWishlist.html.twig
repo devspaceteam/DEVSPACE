@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+  <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({{ asset("SERVICES/img/wishlist/wishlist.jpg") }});"></section>
+
+     <!------ start Block  add to wishlist------->
+
+
+
+
+
+    <!------ Block end  add to wishlist------->
+
+  <!-- Cart -->
+  <section class="cart bgwhite p-t-70 p-b-100">
+   <div class="container">
+    <a href="{{path("ListWishList")}}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"> retourner au wishList</button></a>
+    <div class="container-table-cart pos-relative">
+     <div class="wrap-table-shopping-cart bgwhite">
+      <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+
+
+       <div class="flex-w flex-m w-full-sm" style="padding-left: 70%">
+        <div class="size11 bo4 m-r-10">
+         <input id="searchwishlistinput" class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Recherche Par Nom Produit">
+        </div>
+      </div>
+
+
+
+      <table class="table-shopping-cart" id="resultwishlisttable">
+       <tr class="table-head">
+        <th class="column-1"></th>
+        <th class="column-2">Produit</th>
+        <th class="column-2">Vendeur</th>
+        <th class="column-3"  style="text-align: center">Action</th>
+       </tr>
+     {% for l in list %}
+       <tr class="table-row"><td class="column-1"><div class="cart-img-product b-rad-4 o-f-hidden"><img src="{{ asset('devis/' ~ l.devisName1) }}" alt="IMG-PRODUCT"></div></td>
+        <td class="column-2"><a href="#">{{ l.nom }}</a></td>
+        <td class="column-2">{{ l.User.username }}</td>
+        <td class="column-4"><a href="{{path("AddToWishList",{'id':l.id})}}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"> Ajouter Au wishList</button></a></td>
+       </tr>
+
+     {% endfor %}
+      </table>
+
+
+     </div>
+    </div>
+
+
+   </div>
+  </section>
+
+
+
+ {% endblock home %}

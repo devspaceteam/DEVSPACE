@@ -1,0 +1,34 @@
+vente_homepage:
+    path:     /
+    defaults: { _controller: VenteBundle:Default:index }
+affichePanier:
+    path:     /AffichePanier
+    defaults: { _controller: VenteBundle:Panier:Affiche }
+ajoutaupanier:
+    path:     /ajoutaupanier/{id}
+    defaults: { _controller: VenteBundle:Panier:ajoutaupanier }
+afficheFacture:
+    path:     /AfficheFacture
+    defaults: { _controller: VenteBundle:Panier:AfficheFacture }
+ValiderPanier:
+    path:     /ValiderPanier
+    defaults: { _controller: VenteBundle:Panier:ValiderPanier }
+updateqte:
+    path:     /updateqte/{id}
+    defaults: { _controller: VenteBundle:Panier:updateqte }
+deletefrompanier:
+    path:     /delete/{id}
+    defaults: { _controller: VenteBundle:Panier:delete }
+
+AfficheLivraison:
+    path:     /AfficheLivraison
+    defaults: { _controller: VenteBundle:Livraison:AfficheLivraison }
+DeleteLivraison:
+    path:     /DeleteLivraison/{id}
+    defaults: { _controller: VenteBundle:Livraison:DeleteLivraison }
+afficheLivraisonBO:
+    path:     /BO/AfficheLivraison
+    defaults: { _controller: VenteBundle:Livraison:index8 }
+pdff:
+    path:     /pdff
+    defaults: { _controller: VenteBundle:Default:index }

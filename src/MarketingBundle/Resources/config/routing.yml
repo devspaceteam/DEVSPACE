@@ -1,0 +1,47 @@
+marketing_homepage:
+    path:     /
+    defaults: { _controller: MarketingBundle:Default:index }
+afficheEvenement:
+    path:     /AfficheEvenementtt
+    defaults: { _controller: MarketingBundle:Evenement:Affiche }
+affichePromotion:
+    path:     /AffichePromotion
+    defaults: { _controller: MarketingBundle:Promotion:Affiche }
+
+
+afficheEvenementBO:
+    path:     /BO/AfficheEvenement
+    defaults: { _controller: MarketingBundle:Evenement:index4 }
+affichePromotionBO:
+    path:     /BO/AffichePromotion
+    defaults: { _controller: MarketingBundle:Promotion:index5 }
+create:
+    path:     /BO/AffichePromotionn
+    defaults: { _controller: MarketingBundle:Promotion:create }
+Read:
+    path:     /BO/ReadPromotionn
+    defaults: { _controller: MarketingBundle:Promotion:read }
+create_even:
+    path:     /BO/AfficheEvenementt
+    defaults: { _controller: MarketingBundle:Evenement:create_even }
+Readeve:
+    path:     /BO/ReadEvenementt
+    defaults: { _controller: MarketingBundle:Evenement:Readeve }
+updateprom:
+    path:     /BO/update/{id}
+    defaults: { _controller: MarketingBundle:Promotion:updateprom }
+deleteprom:
+    path:     /BO/delete/{id}
+    defaults: { _controller: MarketingBundle:Promotion:deleteprom }
+updateeve:
+    path:     /BO/updatee/{id}
+    defaults: { _controller: MarketingBundle:Evenement:updateeve }
+deleteeve:
+    path:     /BO/deletee/{id}
+    defaults: { _controller: MarketingBundle:Evenement:deleteeve }
+sendMail:
+    path:     /sendMail
+    defaults: { _controller: MarketingBundle:Evenement:sendMail }
+recherche:
+    path:     /BO/recherche
+    defaults: { _controller: MarketingBundle:Evenement:recherche }

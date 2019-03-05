@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>E-NERSERY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset("images/icons/favicon.png")}} " />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/bootstrap/css/bootstrap.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("fonts/font-awesome-4.7.0/css/font-awesome.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("fonts/themify/themify-icons.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("fonts/Linearicons-Free-v1.0.0/icon-font.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("fonts/elegant-font/html-css/style.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/animate/animate.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/css-hamburgers/hamburgers.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/animsition/css/animsition.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/select2/select2.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/daterangepicker/daterangepicker.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/slick/slick.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("vendor/lightbox2/css/lightbox.min.css")}}" >
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/util.css")}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/main.css")}}" >
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset("logtemp/images/icons/favicon.ico")}}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/bootstrap/css/bootstrap.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/fonts/iconic/css/material-design-iconic-font.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/animate/animate.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/css-hamburgers/hamburgers.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/animsition/css/animsition.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/select2/select2.min.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/vendor/daterangepicker/daterangepicker.css")}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/css/util.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset("logtemp/css/main.css")}}">
+    <!--===============================================================================================-->
+
+
+</head>
+
+<body class="animsition">
+
+<!-- Header -->
+<header class="header1">
+    <!-- Header desktop -->
+
+    <div class="container-menu-header">
+
+        <div class="wrap_header" style="display: table;">
+            <!-- Logo -->
+            <div style="float: left; width: 5%;">  <a>&nbsp;</a> </div>
+            <div style="float: left; width: 15%;">
+            <a href="{{path("pepiniere_homepage")}}"  >
+                <img src="{{ asset("images/icons/logo1.png")}}" style="width: 120px; height: 80px;">
+            </a>
+            </div>
+            <!-- Menu -->
+            <div class="wrap_menu" style="float: left">
+                <nav class="menu">
+                    <ul class="main_menu">
+                        <li>
+                            <a href="{{path("pepiniere_homepage")}}">Home</a>
+                        </li>
+
+                        <li>
+                            <a href ="{{path("afficheShop")}}">Shop</a>
+                        </li>
+
+                        <li class="sale-noti">
+                            <a href="{{path("affichePromotion")}}">Promotion</a>
+                        </li>
+
+                        <li>
+                            <a href="{{path("afficheEvenement")}}">Evenement</a>
+                        </li>
+                        {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") and is_granted('ROLE_ADMIN')==false %}
+                        <li>
+                            <a>Donnée Avis</a>
+                            <ul class="sub_menu">
+                                <li>
+                                    <a href="{{path("afficheReclamation")}}">Reclamation</a>
+                                    <ul class="sub_menu">
+                                        <li style="text-align: center"><a href="{{ path("AddReclamation",{"type":"jardinier"}) }}">Réclamer un jardinier</a></li>
+                                        <li style="text-align: center"><a href="{{ path("AddReclamation",{"type":"entreprise"}) }}">Réclamer une entreprise</a></li>
+                                        <li style="text-align: center"><a href="{{ path("AddReclamation",{"type":"agriculteur"}) }}">Réclamer un agriculteur</a></li>
+                                        <li style="text-align: center"><a href="{{ path("AddReclamation",{"type":"utilisateur"}) }}" >Réclamer un autre utilisateur</a></li>
+                                        <li style="text-align: center"><a href="{{ path("AddReclamation",{"type":"Autre"}) }}">Autre</a></li>
+                                    </ul>
+                                </li>
+                               <!-- <li><a href="home-02.html">évaluation</a></li>-->
+                            </ul>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{path("afficheBlog")}}">Blog</a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ path('AfficheLivraison') }}">Livraisons</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Header Icon -->
+            <div class="header-icons" style="float: left">
+                <div>
+                        <span class="top_login">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                            <a href="{{ path('fos_user_profile_show') }}"><img src="{{ asset("images/icons/icon-header-01.png") }}" class="header-icon1" alt="ICON"></a>
+                            <a   href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_profile_show') }}"><img src="{{ asset("images/icons/icon-header-01.png") }}" class="header-icon1" alt="ICON"></a>
+                            <a  href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
+                        </span>
+                </div>
+
+
+
+                <span class="linedivide1"></span>
+                <div>
+                    <a href="{{path("fos_message_inbox")}}"><img  src="{{ asset("images/icons/messs.png")}}" ></a>
+                </div>
+
+                <span class="linedivide1"></span>
+                <div >
+
+                    <a href="{{path("ListWishList")}}" class=" icon_heart"></a>
+
+                </div>
+                <span class="linedivide1"></span>
+
+
+                <div class="header-wrapicon2">
+                   <a href="{{path("affichePanier")}}"> <img  src="{{ asset("images/icons/icon-header-02.png")}}" class="header-icon1 js-show-header-dropdown" alt="ICON"></a>
+                    <span class="header-icons-noti">+</span>
+
+                    <!-- Header cart noti -->
+
+                    </div>
+                {% if  is_granted('ROLE_ADMIN') or is_granted('ROLE_AGRICULTEUR') or is_granted('ROLE_ENTREPRISE') or is_granted('ROLE_JARDINIER') %}
+                <span id="dash_sep" class="linedivide1" ></span>
+                <div>
+                    <a id="dash_icon"class="fa fa-dashboard" href="{{path("pepiniere_homepage2")}}" ></a>
+                </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+
+
+{% block home %}
+{% endblock home %}
+
+
+
+
+<!-- Footer -->
+<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+    <div class="flex-w p-b-90">
+        <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+            <h4 class="s-text12 p-b-30">
+                GET IN TOUCH
+            </h4>
+
+            <div>
+                <p class="s-text7 w-size27">
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                </p>
+
+                <div class="flex-m p-t-30">
+                    <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+                    <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+                    <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+                    <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+                    <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+            <h4 class="s-text12 p-b-30">
+                Categories
+            </h4>
+
+            <ul>
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Men
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Women
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Dresses
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Sunglasses
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+            <h4 class="s-text12 p-b-30">
+                Links
+            </h4>
+
+            <ul>
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Search
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        About Us
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Contact Us
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Returns
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+            <h4 class="s-text12 p-b-30">
+                Help
+            </h4>
+
+            <ul>
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Track Order
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Returns
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="#" class="s-text7">
+                        Shipping
+                    </a>
+                </li>
+
+                <li class="p-b-9">
+                    <a href="{{path("afficheFAQ")}}" class="s-text7">
+                        FAQs
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+        <div class="t-center s-text8 p-t-20">
+            Copyright © 2019 All rights reserved. | This website is made   by DEVSPACE
+        </div>
+
+</footer>
+
+
+
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+</div>
+
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
+
+
+
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/jquery/jquery-3.2.1.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/animsition/js/animsition.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/bootstrap/js/popper.js")}}" ></script>
+<script type="text/javascript" src="{{ asset("vendor/bootstrap/js/bootstrap.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/select2/select2.min.js")}}" ></script>
+<script type="text/javascript">
+    $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/slick/slick.min.js")}}" ></script>
+<script type="text/javascript" src="{{ asset("js/slick-custom.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/countdowntime/countdowntime.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/lightbox2/js/lightbox.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/sweetalert/sweetalert.min.js")}}" ></script>
+<script type="text/javascript">
+    $('.block2-btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to cart !", "success");
+        });
+    });
+
+    $('.block2-btn-addwishlist').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to wishlist !", "success");
+        });
+    });
+</script>
+
+
+<!-- ============================================================== -->
+
+<!--===============================================================================================-->
+<script src="{{ asset("js/main.js")}}" ></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/jquery/jquery-3.2.1.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/animsition/js/animsition.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/bootstrap/js/popper.js")}}"></script>
+<script src="{{ asset("logtemp/vendor/bootstrap/js/bootstrap.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/select2/select2.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/daterangepicker/moment.min.js")}}"></script>
+<script src="{{ asset("logtemp/vendor/daterangepicker/daterangepicker.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/countdowntime/countdowntime.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/js/main.js")}}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/search1.js') }}"></script>
+<script src="{{ asset('js/searchwishlist.js') }}"></script>
+<script src="{{ asset('js/searchreclamationFE.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/jquery/jquery-3.2.1.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/animsition/js/animsition.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/bootstrap/js/popper.js")}}" ></script>
+<script type="text/javascript" src="{{ asset("vendor/bootstrap/js/bootstrap.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/select2/select2.min.js")}}" ></script>
+<script type="text/javascript">
+    $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/slick/slick.min.js")}}" ></script>
+<script type="text/javascript" src="{{ asset("js/slick-custom.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/countdowntime/countdowntime.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/lightbox2/js/lightbox.min.js")}}" ></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset("vendor/sweetalert/sweetalert.min.js")}}" ></script>
+<script type="text/javascript">
+    $('.block2-btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to cart !", "success");
+        });
+    });
+
+    $('.block2-btn-addwishlist').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to wishlist !", "success");
+        });
+    });
+</script>
+
+
+<!-- ============================================================== -->
+<!--===============================================================================================-->
+<script src="{{ asset("js/main.js")}}" ></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/jquery/jquery-3.2.1.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/animsition/js/animsition.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/bootstrap/js/popper.js")}}"></script>
+<script src="{{ asset("logtemp/vendor/bootstrap/js/bootstrap.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/select2/select2.min.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/daterangepicker/moment.min.js")}}"></script>
+<script src="{{ asset("logtemp/vendor/daterangepicker/daterangepicker.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/vendor/countdowntime/countdowntime.js")}}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset("logtemp/js/main.js")}}"></script>
+<link rel="apple-touch-icon" sizes="180x180"
+      href="{{ asset('front/assets/images/favicons/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="{{ asset('front/assets/images/favicons/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="{{ asset('front/assets/images/favicons/favicon-16x16.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/assets/images/favicons/favicon.ico') }}">
+<link rel="manifest" href="{{ asset('front/assets/images/favicons/manifest.html') }}">
+<link rel="mask-icon" href="{{ asset('front/assets/images/favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
+<meta name="msapplication-TileImage" content="assets/images/favicons/mstile-150x150.png">
+<meta name="theme-color" content="#ffffff">
+<!--  --><!--    Stylesheets--><!--    =============================================--><!-- Default stylesheets-->
+<link href="{{ asset('front/assets/lib/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<!-- Template specific stylesheets-->
+<link href="{{ asset('front/assets/lib/loaders.css/loaders.min.css') }}" rel="stylesheet">
+<link href="{{ asset('front/fonts.googleapis.com/cssb628.css?family=Nunito:300,400,600') }}" rel="stylesheet">
+<link href="{{ asset('front/assets/lib/iconsmind/iconsmind.css') }}" rel="stylesheet">
+<link href="{{ asset('front/code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}" rel="stylesheet">
+<link href="{{ asset('front/assets/lib/hamburgers/dist/hamburgers.min.css') }}" rel="stylesheet">
+<link href="{{ asset('front/assets/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ asset('front/assets/lib/flexslider/flexslider.css') }}" rel="stylesheet">
+<!-- Main stylesheet and color file-->
+<link href="{{ asset('front/assets/css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('front/assets/css/custom.css') }}" rel="stylesheet">
+<script src="{{ asset('front/cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js') }}"></script>
+<script src="{{ asset('front/assets/lib/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('front/cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js') }}"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="{{ asset('front/assets/lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('front/assets/lib/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('front/assets/lib/jquery-menu-aim/jquery.menu-aim.js') }}"></script>
+<script src="{{ asset('front/assets/lib/gsap/src/minified/TweenMax.min.js') }}"></script>
+<script src="{{ asset('front/assets/lib/gsap/src/minified/plugins/ScrollToPlugin.min.js') }}"></script>
+<script src="{{ asset('front/assets/lib/CustomEase.min.js') }}"></script>
+<script src="{{ asset('front/assets/js/config.js') }}"></script>
+<script src="{{ asset('front/assets/lib/rellax/rellax.min.js') }}"></script>
+<script src="{{ asset('front/assets/js/zanimation.js') }}"></script>
+<script src="{{ asset('front/assets/js/inertia.js') }}"></script>
+<script>(function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+        h._hjSettings = {hjid: 731669, hjsv: 6};
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics-->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-76729372-6"></script>
+<script>window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-76729372-6');
+</script>
+<script src="{{ asset('front/assets/lib/flexslider/jquery.flexslider-min.js') }}"></script>
+<script src="{{ asset('front/assets/js/core.js') }}"></script>
+<script src="{{ asset('front/assets/js/main.js') }}"></script>
+</body>
+</html>

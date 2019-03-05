@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+ {% block home %}
+     <html>
+     <head></head>
+     <body>
+     <center>
+         <h1>Livraisons</h1>
+         <table border="1">
+             <tr align="center">
+                 <th>Nom</th>
+                 <th>Quantité</th>
+                 <th>Date de départ</th>
+                 <th>Date d'arrivé éstimée</th>
+             </tr>
+             {% for p in livraison %}
+                 <tr align="center" >
+                     <td width="100"> {{ p.Produit.nom }} </td>
+                     <td width="100"> {{ p.Panier.qtpanier }} </td>
+                     <td width="200">  {{ p.DateDepart|date("m/d/Y")}} </td>
+                     <td width="200"> {{ p.DateDepart|date_modify("+4 day")|date("m/d/Y") }} </td>
+                     {% if p.DateDepart|date_modify("+4 day")|date("m/d/Y") < "now"|date("m/d/Y") %}
+                     <td bgcolor="red">        Date d'arrivé dépassée</td>
+                     <td style="border: hidden"> <a href="{{ path('DeleteLivraison',{'id':p.id}) }}"><img src="{{ asset("images/cancel.png")}}" width="50" height="50"></td>
+                     <td style="border: hidden">&nbsp;</td><td style="border: hidden"><a href="{{ path('afficheReclamation') }}" ><button class="flex-c-m w-size2 bg1 bo-rad-23 hov1 s-text1 trans-0-4"> Passer une reclamation</button></a></td>
+                     {% else %}
+                     <td bgcolor="#7cfc00">Votre livraison est en chemin</td>
+                         <td style="border: hidden"> <a href="{{ path('DeleteLivraison',{'id':p.id}) }}"/><img src="{{ asset("images/cancel.png")}}" width="50" height="50"></td>
+                     {% endif %}
+                 </tr>
+             {% endfor %}
+         </table>
+     </center>
+     </body>
+     </html>
+ {% endblock home %}

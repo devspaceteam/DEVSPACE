@@ -1,0 +1,55 @@
+<?php
+
+namespace CommunicationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * Comment
+ *
+ * @ORM\Table(name="comment")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="CommunicationBundle\Repository\CommentRepository")
+ */
+class Comment
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BlogPost", inversedBy="comments")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     */
+    private $post;
+
+
+
+
+
+
+}

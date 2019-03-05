@@ -1,0 +1,46 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+          AFFICHAGE promotion
+          <small><a href="{{path("create")}}">retour</a></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Mailbox</li>
+      </ol>
+    </section>
+    <center>
+        <legend > AFFICHAGE promotion </legend> <br><br><br>
+      <table>
+        <tr>
+          <table style="width: 25cm" >
+              <tr><th>nomPromotion</th><th>dateDebut</th><th>dateFin</th><th >modifier</th><th >supprimer</th></tr>
+              {% for modele in modeles %}
+
+                <td >  {{ modele.nomPromotion}}</td>
+                <td >  {{ modele.dateDebut|date}}</td>
+                <td > {{ modele.dateFin|date}}</td>
+
+                <td><a href="{{ path('updateprom',{'id':modele.nomPromotion}) }}"> <img src="{{ asset ("dist/img/refresh-button.png")}}" ></a> </td>
+                <td><a href="{{ path('deleteprom',{'id':modele.nomPromotion}) }}"><img src="{{ asset ("dist/img/rubbish-bin.png")}}" ></a> </td>
+
+
+
+
+
+                </tr>{% endfor %}
+          </table>
+    </center>
+
+    <!-- Main content -->
+
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

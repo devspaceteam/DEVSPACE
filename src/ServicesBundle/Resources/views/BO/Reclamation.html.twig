@@ -1,0 +1,169 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Reclamation<small>{{ nbunread.x }} nouveaux </small></h1>
+      <ol class="breadcrumb"><li><a href="#"><i class="fa fa-dashboard"></i> tableau de bord</a></li><li class="active">Raclamation</li></ol>
+    </section>
+
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li >
+                  <a href="{{ path('ShowReclamationBO') }}"><i class="fa fa-inbox"></i> Tout<span class="label label-primary pull-right">{{ nbunread.x+nbread.x }}</span></a></li>
+                <li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_UNReaded') }}"><i class="fa fa-inbox"></i> Non lu<span class="label label-primary pull-right">{{ nbunread.x }}</span></a></li>
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Readed') }}"><i class="fa fa-filter"></i> Lu <span class="label label-warning pull-right">{{ nbread.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pour être banni</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Important') }}"><i class="fa fa-circle-o text-red"></i> Important<span class="label label-warning pull-right">{{ important.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Géré</h3>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li>
+                  <a href="{{ path('ShowReclamationBO_Trash') }}"></i> Poubelle<span class="label label-warning pull-right">{{ trash.x }}</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{ list }} - List</h3>
+
+
+
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                {% if(list=="All") %}
+                <a href="{{ path('ShowReclamationBO') }}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button></a>
+                {% elseif(list=="Readed") %}
+                <a href="{{ path('ShowReclamationBO_Readed') }}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button></a>
+                {% elseif(list=="UnReaded") %}
+                  <a href="{{ path('ShowReclamationBO_UNReaded') }}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button></a>
+                {% elseif(list=="Trash") %}
+                  <a href="{{ path('ShowReclamationBO_Trash') }}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button></a>
+                {% else %}
+                  <a href="{{ path('ShowReclamationBO_Important') }}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button></a>
+                {% endif %}
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                {% for reclamation in myreclamation %}
+                  <tr>
+                    {% if(reclamation.state==0) %}
+                    <td class="mailbox-star"><a href="{{ path('ShowOneReclamationBO',{"id":reclamation.id}) }}"><i class="fa fa-star text-yellow"></i></a></td><!--    fa-star-o   -->
+                        {% else %}
+                          <td class="mailbox-star"><a href="{{ path('ShowOneReclamationBO',{"id":reclamation.id}) }}"><i class="fa fa-star-o text-yellow"></i></a></td><!--    fa-star-o   -->
+                            {% endif %}
+                  {% if(reclamation.usertoclaim=="NONE") %}
+                    <td class="mailbox-name"><a href="{{ path('ProfileReclamation',{"username":reclamation.user.username}) }}"><b>{{ reclamation.user.username }} </b> </a> &nbsp&nbsp Suggestion</td>
+                  {% else %}
+                    <td class="mailbox-name"><a href="{{ path('ProfileReclamation',{"username":reclamation.user.username}) }}"><b>{{ reclamation.user.username }} </b> </a>Reclame<a href="{{ path('ProfileReclamation',{"username":reclamation.usertoclaim}) }}" > {{ reclamation.usertoclaim }} </a></td>
+                  {% endif %}
+                    <td class="mailbox-subject">  <b>Subject: </b> {{ reclamation.subject }}  </td>
+                     {% if(reclamation.important==0 and reclamation.trash==0) %}
+                    <td class="mailbox-attachment"><a href="{{ path('SetAsImportant',{"id":reclamation.id}) }}"><i class="fa fa-circle-o text-red"></i> Set As Important</a></td>
+                     {% endif %}
+
+                      {% if(reclamation.trash==0) %}
+                        <td class="mailbox-attachment"><a href="{{ path('SendToTrash',{"id":reclamation.id}) }}"><i class="fa fa-circle-o text-yellow"></i> Send To Trash</a></td>
+                      {% endif %}
+                      {% if(reclamation.trash==1) %}
+                        <td class="mailbox-attachment"><a href="{{ path('DeleteReclamationBO',{"id":reclamation.id}) }}"><i class="fa fa-circle-o text-yellow"></i> Delete</a></td>
+                      {% endif %}
+                    <td class="mailbox-date"><a href="#">{{ date(d).diff(date(reclamation.date)).days }} days ago</a></td>
+                    <td class="mailbox-date"><a href="{{ path('ShowOneReclamationBO',{"id":reclamation.id}) }}">Open</a></td>
+                  </tr>
+                {% endfor %}
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+
+
+
+
+
+            <div class="box-footer no-padding">
+              <div class="mailbox-controls">
+                <div class="pull-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
+              </div>
+            </div>
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}

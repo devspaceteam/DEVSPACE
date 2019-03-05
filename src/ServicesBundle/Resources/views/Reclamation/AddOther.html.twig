@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+
+  <!-- Title Page -->
+  <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({{ asset("SERVICES/img/feedback/feedback1.png") }});">
+   <h5 class=" t-center">
+    <br><br><br>
+    <br>
+    Votre Avis est important pour nous
+   </h5>
+  </section>
+
+  <!-- content page -->
+  <section class="bgwhite p-t-66 p-b-38" >
+   <div class="col-md-6 p-b-30"  style="margin: 0 auto;width: 100%; ">
+       {{ form_start(form) }}
+
+    <h4 class="m-text26 p-b-36 p-t-15">
+       Other
+    </h4>
+
+    <div class="bo4 of-hidden size15 m-b-20">
+        {{ form_widget(form.subject, { 'attr': {'class': "sizefull s-text7 p-l-22 p-r-22",'placeholder': "Subject"} }) }}
+    </div>
+
+
+
+    <div class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20">
+        {{ form_widget(form.description, { 'attr': {'class': "dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20",'placeholder': "description"} }) }}
+    </div>
+
+
+
+    <div class="w-size25">
+     <!-- Button -->
+     <input type="submit" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" value=" Send">
+
+    </div>
+      {{ form_end(form) }}
+   </div>
+  </section>
+
+
+
+
+
+   </div>
+
+
+
+ {% endblock home %}

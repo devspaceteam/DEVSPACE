@@ -1,0 +1,45 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+     <!-- Content Wrapper. Contains page content -->
+     <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <section class="content-header">
+             <h1>
+                 <a href="{{path("Readeve")}}">
+                     <i class="fa fa-pie-chart"></i><span>Evenement</span>
+                 </a>         <a href="{{path("recherche")}}">
+                     <i class="fa fa-files-o"></i><span>Chercher</span>
+                 </a>
+
+
+                 <small></small>
+             </h1>
+             <ol class="breadcrumb">
+                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                 <li class="active">Evenement</li>
+             </ol>
+
+             <center>
+                 <h1>chercher un Evenement  </h1><br><br><br>
+                 <img src="{{ asset ("dist/img/rech3.png")}}" ><br>
+                 <form method="post">
+                     <table border="0">
+                         <tr>
+                             <td> nomEvenement</td>  <td><input type="text" name="nomEvenement"> </td><br></tr><br><br><br>
+
+                         <tr>
+                             <td> </td> <td><input type="submit"value="chercher"class="btn btn-primary btn-block margin-bottom"></td><br></tr>
+                     </table>
+                 </form>
+             </center>
+
+
+         </section>
+
+         <!-- Main content -->
+
+         <!-- /.content -->
+     </div>
+     <!-- /.content-wrapper -->
+ {% endblock %}

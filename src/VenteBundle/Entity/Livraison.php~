@@ -1,0 +1,193 @@
+<?php
+
+namespace VenteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Livraison
+ *
+ * @ORM\Table(name="livraison")
+ * @ORM\Entity(repositoryClass="VenteBundle\Repository\LivraisonRepository")
+ */
+class Livraison
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @ORM\ManyToOne(targetEntity="VenteBundle\Entity\Panier")
+     * @ORM\JoinColumn(name="IdPanier", referencedColumnName="id")
+     *
+     */
+    private $Panier;
+    /**
+     * @ORM\ManyToOne(targetEntity="ProduitBundle\Entity\Produit")
+     * @ORM\JoinColumn(name="IdProduit", referencedColumnName="id")
+     *
+     */
+    private $Produit;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DateDepart", type="date")
+     */
+    private $dateDepart;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DateArrive", type="date")
+     */
+    private $dateArrive;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="DepartValid", type="boolean")
+     */
+    private $departValid;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="ArriveValid", type="boolean")
+     */
+    private $arriveValid;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateDepart
+     *
+     * @param \DateTime $dateDepart
+     *
+     * @return Livraison
+     */
+    public function setDateDepart($dateDepart)
+    {
+        $this->dateDepart = $dateDepart;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDepart
+     *
+     * @return \DateTime
+     */
+    public function getDateDepart()
+    {
+        return $this->dateDepart;
+    }
+
+    /**
+     * Set dateArrive
+     *
+     * @param \DateTime $dateArrive
+     *
+     * @return Livraison
+     */
+    public function setDateArrive($dateArrive)
+    {
+        $this->dateArrive = $dateArrive;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateArrive
+     *
+     * @return \DateTime
+     */
+    public function getDateArrive()
+    {
+        return $this->dateArrive;
+    }
+
+    /**
+     * Set departValid
+     *
+     * @param boolean $departValid
+     *
+     * @return Livraison
+     */
+    public function setDepartValid($departValid)
+    {
+        $this->departValid = $departValid;
+    
+        return $this;
+    }
+
+    /**
+     * Get departValid
+     *
+     * @return boolean
+     */
+    public function getDepartValid()
+    {
+        return $this->departValid;
+    }
+
+    /**
+     * Set arriveValid
+     *
+     * @param boolean $arriveValid
+     *
+     * @return Livraison
+     */
+    public function setArriveValid($arriveValid)
+    {
+        $this->arriveValid = $arriveValid;
+    
+        return $this;
+    }
+
+    /**
+     * Get arriveValid
+     *
+     * @return boolean
+     */
+    public function getArriveValid()
+    {
+        return $this->arriveValid;
+    }
+
+    /**
+     * Set panier
+     *
+     * @param \VenteBundle\Entity\Panier $panier
+     *
+     * @return Livraison
+     */
+    public function setPanier(\VenteBundle\Entity\Panier $panier = null)
+    {
+        $this->Panier = $panier;
+    
+        return $this;
+    }
+
+    /**
+     * Get panier
+     *
+     * @return \VenteBundle\Entity\Panier
+     */
+    public function getPanier()
+    {
+        return $this->Panier;
+    }
+}

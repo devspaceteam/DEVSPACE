@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/material-press/html/ltr/page-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Feb 2019 10:17:01 GMT -->
+<head>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("profile/assets/images/favicon.png") }}">
+    <link href="{{ asset("profile/dist/css/style.css") }}" rel="stylesheet">
+
+
+    <!-- Bootstrap & FontAwesome & Entypo CSS -->
+    <link href="{{ asset("profile/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" href="{{ asset("profile/css/font-awesome-ie7.min.css") }}"><![endif]-->
+    <link href="{{ asset("profile/css/font-entypo.css") }}" rel="stylesheet" type="text/css">
+
+    <!-- Fonts CSS -->
+    <link href="{{ asset("profile/css/fonts.css") }}"  rel="stylesheet" type="text/css">
+    <!-- This page CSS -->
+    <!-- This page CSS -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--===========================================PROFILE HEAD========================================-->
+
+
+</head>
+<body>
+
+<div class="page-titles">
+
+
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Add Post</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="{{path("pepiniere_homepage")}}" class="breadcrumb"><i class="large material-icons">arrow_back</i> Go to App</a>
+        </div>
+        {% if  is_granted('ROLE_ADMIN') or is_granted('ROLE_AGRICULTEUR') or is_granted('ROLE_ENTREPRISE') %}
+            <div class="custom-breadcrumb ml-right">
+                <a href="{{path("pepiniere_homepage2")}}" class="breadcrumb"><i class="large material-icons">arrow_back</i> Go to DashBord</a>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+</div>
+
+    <div class="card-content center-align">
+        <br>
+        <h1>Add Post</h1>
+<br><br>
+
+                    {{ form_start(form) }}
+
+
+
+
+        <div class="card-content center-align">
+            <div class="input-field col s6">
+                {{ form_row(form.title) }}
+                {{ form_row(form.body) }}
+                {{ form_row(form.slug) }}
+                {{ form_row(form.categoryName, {'id': 'inputvalue','attr':{'placeholder':"category"}}) }}
+
+            </div>
+        </div>
+
+                    <ol id="resultat">
+
+                    </ol>
+
+
+
+                        <input type="submit"   class="btn cyan waves-effect waves-light ">
+                    {{ form_end(form) }}
+
+
+
+<br><br><br>
+
+                {% if  is_granted('ROLE_ADMIN') or is_granted('ROLE_AGRICULTEUR') or is_granted('ROLE_ENTREPRISE') %}
+
+                <h1>Add Category</h1>
+
+<br>
+                    {{ form_start(form_category) }}
+                    {{ form_widget(form_category) }}
+
+                    <button class="btn cyan waves-effect waves-light center" type="submit" name="action">Submit
+                    </button>
+
+                    {{ form_end(form_category) }}
+                   <br>
+
+
+                {% endif %}
+                </div>
+
+</div>
+
+<script src="{{asset('js/jquery.js') }}"></script>
+<script src="{{asset('js/rechercheCategoryCom.js') }}"></script>
+
+</body>
+
+</html>

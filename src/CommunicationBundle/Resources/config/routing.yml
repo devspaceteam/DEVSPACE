@@ -1,0 +1,56 @@
+communication_homepage:
+    path:     /
+    defaults: { _controller: CommunicationBundle:Default:index }
+afficheBlog:
+    path:     /AfficheBlog
+    defaults: { _controller: CommunicationBundle:Blog:index6 }
+afficheFAQ:
+    path:     /AfficheFAQ
+    defaults: { _controller: CommunicationBundle:FAQ:Affiche }
+afficheMessage:
+    path:     /AfficheMessage
+    defaults: { _controller: CommunicationBundle:Message:Affiche }
+
+
+afficheBlogBO:
+    path:     /BO/AfficheBlog
+    defaults: { _controller: CommunicationBundle:Blog:index6 }
+
+afficheFAQBO:
+    path:     /BO/AfficheFAQ
+    defaults: { _controller: CommunicationBundle:FAQ:index7 }
+
+blog_new:
+    path: /new_blogPost
+    defaults: { _controller: CommunicationBundle:Blog:new }
+
+blog_new_empty:
+    path: /new_blogPost_empty/{valeur}
+    defaults: { _controller: CommunicationBundle:Blog:new_empty }
+
+
+
+blog_show:
+    path: /show/{id}
+    defaults: { _controller: CommunicationBundle:Blog:show }
+
+blog_edit:
+    path: /edit/{id}
+    defaults: { _controller: CommunicationBundle:Blog:edit }
+
+blog_delete:
+    path: /delete/{post}
+    defaults: { _controller: CommunicationBundle:Blog:delete }
+
+blog_category_new:
+    path: /new_blogCategory
+    defaults: { _controller: CommunicationBundle:Blog:createCategory }
+
+admin_blog_delete:
+    path: /AD_blog_delete/{post}
+    defaults: { _controller: CommunicationBundle:Blog:adminDelete }
+
+
+showauthormm:
+    path: /showauthormm/{id}
+    defaults: { _controller: CommunicationBundle:Blog:authorshowmm }

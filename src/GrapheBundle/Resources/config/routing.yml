@@ -1,0 +1,6 @@
+graphe_homepage:
+    path:     /aze
+    defaults: { _controller: GrapheBundle:Default:index }
+indexxx:
+   path: /pie
+   defaults: { _controller: GrapheBundle:Default:indexxx}

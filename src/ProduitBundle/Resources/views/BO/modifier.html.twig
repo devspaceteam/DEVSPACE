@@ -1,0 +1,41 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+       <div class="box box-primary">
+         <div class="box-header with-border">
+           <h3 >Modifier un Produit</h3><br>
+             {{form_start(form)}}
+           <div class="box-body no-padding">
+             <div class="table-responsive mailbox-messages">
+               <table class="table table-hover table-striped">
+                 <tr><td class="mailbox-name"> Nom du Produit  </td>  <td>{{ form_widget(form.nom, { 'attr': { 'maxlength' : 10 } }) }}</td></tr>
+                 <tr><td class="mailbox-name"> Description du Produit </td>  <td> {{ form_widget(form.description, { 'attr': { 'maxlength' : 40 } }) }}</td></tr>
+                 <tr><td class="mailbox-name"> Prix du Produit </td>  <td>{{ form_widget(form.prix) }}</td></tr>
+                 <tr><td class="mailbox-name"> Quantite du Produit </td>  <td>{{ form_widget(form.quantite) }}</td></tr>
+                 <tr><td class="mailbox-name"> Image Primaire du Produit </td>  <td>{{ form_widget(form.devisFile1) }}</td></tr>
+                 <tr><td class="mailbox-name"> Image Secondaire du Produit </td>  <td>{{ form_widget(form.devisFile2) }}</td></tr>
+                 <tr><td class="mailbox-name"> Image Terciére du Produit</td>  <td>{{ form_widget(form.devisFile3) }}</td></tr>
+                 <tr><td class="mailbox-name"> Type du Produit </td>  <td>{{ form_widget(form.Categorie) }}</td></tr>
+               </table>
+
+
+             </div></div>
+
+         </div>
+       </div>
+       <input type="submit" value="Modifier" class="btn btn-primary margin-bottom">
+         {{ form_end(form) }}
+     </section>
+
+     <!-- Main content -->
+     <section class="content">
+       <!-- /.col -->
+
+     </section>
+   </div>
+
+ {% endblock %}

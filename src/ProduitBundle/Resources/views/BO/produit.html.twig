@@ -1,0 +1,158 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Mes Produits
+
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Mailbox</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+
+
+        <!-- /.col -->
+        <div class="col-md-14">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">
+                  <a href="{{ path("ajouterProduitBO") }}" class="btn btn-primary btn-block margin-bottom">
+                      Ajouter
+                  </a></h3>
+                  <div class="box-tools pull-right">
+                      <div class="has-feedback">
+                          <input type="text" class="form-control input-sm" placeholder="Search Mail" name="search" id="search" placeholder="search">
+                          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                  </div>
+
+
+
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped" id="contenu">
+                 <thead>
+                      <!-- <td class="mailbox-name"><a><b>Actions </b></a></td>
+                        <td class="mailbox-name"><a><b>Name</b></a></td>
+                        <td class="mailbox-name"><a><b>Price</b></a></td>
+                        <td class="mailbox-name"><a><b>Quantity</b></a></td>
+                        <td class="mailbox-name"><a><b>Description</b></a></td>
+                        <td class="mailbox-name" ><a><b>Date de Modification</b></a></td>
+                        <td class="mailbox-name" ><a><b>Status</b></a></td>
+-->
+<tr>
+                      <th class="mailbox-name"><a><b>Action</b></a></th>
+                      <th class="mailbox-name"><a><b>Nom</b></a></th>
+                      <th class="mailbox-name"><a><b>Prix</b></a></th>
+                      <th class="mailbox-name"><a><b>Quantite</b></a></th>
+                      <th class="mailbox-name"><a><b>Description</b></a></th>
+                      <th class="mailbox-name"><a><b>Date de Modification</b></a></th>
+                      <th class="mailbox-name"><a><b>Status</b></a></th>
+                      </tr>
+                 </thead>
+                    <tbody>
+                        {#{% if user is_granted('ROLE_ADMIN') %}#}
+                  {% for p in produit %}
+                    <tr>
+                      <td><a type="button" class="btn btn-default btn-sm" href="{{path('ModifierProduitBO',{'id':p.id})}}">
+                          <i class="fa fa-refresh"></i>
+                        </a>
+                        <a type="button" class="btn btn-default btn-sm" href="{{path('SupprimerProduitBO',{'id':p.id})}}">
+                          <i class="fa fa-trash-o"></i>
+                        </a></td>
+
+
+                      <td class="mailbox-subject"><a>{{ p.nom }}</a></td>
+                      <td class="mailbox-subject"><b>${{ p.prix }}</b>  </td>
+                        <td class="mailbox-subject"><span class="label label-primary ">{{ p.quantite }} </span> </td>
+                      <td>  {{ p.description }}</td>
+                      <td>{{ p.updatedAt | date('Y-m-d')}}</td>
+                        <td>
+                             {% if p.quantite==0 %}
+                            <span class="label label-danger ">Stock vide</span>
+                             {% endif %}
+                            {% if p.quantite != 0 %}
+                            {% if  p.quantite < 10 %}
+                                <span class="label label-warning ">Stock limité</span>
+                            {% endif %}
+                            {% endif %}
+                           {# {% if p.quantite >= 10 %}
+                                <span class="label label-primary ">Stock disponible</span>
+                            {% endif %} #}
+                        </td>
+                    </tr>
+                  {% endfor %}
+
+                        {#{% endif %}#}
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      <div class="navigation">
+          {{ knp_pagination_render(produit) }}
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+<script src="{{ asset('jquery.js') }}"></script>
+     <script>
+
+         $(document).ready( function() {
+             // déterminer l'index des colonnes les colonnes
+             var colonnes = {};
+             $("#contenu thead th").each(function(index, th)
+                 {
+                     colonnes[index] = $(th).text();
+                 }
+             );
+
+     $("#search").keyup(function()
+     {
+     var mots = $(this).val().toLowerCase().split(" ");
+     $("#contenu tbody tr").each(function(index, tr)
+     {
+
+     if (mots[0].length > 0) $(tr).hide(); else $(tr).show();
+     $("td", tr).each(function(index, td)
+     {
+     if (colonnes[index] in {'Nom':true})
+     {
+     for (mot in mots)
+     {
+     if (mots[mot].length > 0 && $(td).text().toLowerCase().indexOf(mots[mot])>= 0)
+     {
+     $(tr).show();
+     return false;
+     }
+     }
+     }
+     });
+     });
+     });
+
+     });
+</script>
+  {% endblock %}

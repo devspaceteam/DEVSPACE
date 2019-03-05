@@ -1,0 +1,62 @@
+<!doctype html>
+<div id="invoice-POS">
+ <center id="top">
+  <div class="logo"></div>
+  <div class="info">
+   <a href="https://imgbb.com/"><img src="https://i.ibb.co/Sm2NX6G/Enursery.png" alt="Enursery" border="0"></a>
+
+  </div><!--End Info-->
+ </center><!--End InvoiceTop-->
+ <center>
+  <div id="mid">
+   <div class="info">
+    <h2>Info Contact</h2>
+    <p>
+     Addresse : Ariana city, Tunisia 2040</br>
+     Email   : E-Nursery@gmail.com</br>
+     Tél   : 524 -058-684</br>
+    </p>
+   </div>
+  </div><!--End Invoice Mid-->
+
+  <div id="bot">
+
+   <div id="table">
+    <table border="1" width="1000">
+     <tr class="tabletitle">
+      <td class="item" align="center"><h2>Produit</h2></td>
+      <td class="Hours" align="center"><h2>Quantité</h2></td>
+      <td class="Rate" align="center"><h2>Sous Total</h2></td>
+     </tr>
+        {% set Total = 0 %}
+ {% for a in fac %}
+     <tr class="service">
+      <td class="tableitem"><p class="itemtext">{{ a.Produit.nom }}</p></td>
+      <td class="tableitem"><p class="itemtext">{{ a.Qtpanier }}</p></td>
+      <td class="tableitem"><p class="itemtext">${{ a.Produit.prix*a.qtpanier }}</p></td>
+     </tr>
+  {% set Total = Total + a.Produit.prix*a.qtpanier %}
+
+     {% endfor %}
+     <tr class="tabletitle">
+      <td class="Rate" colspan="2"><h2>tax</h2></td>
+      <td class="payment"><h2>$2</h2></td>
+     </tr>
+     <tr class="tabletitle">
+      <td class="Rate" colspan="2"><h2>Total</h2></td>
+      <td class="payment"><h2>${{ Total + 2}}</h2></td>
+     </tr>
+
+    </table>
+   </div><!--End Table-->
+
+   <div id="legalcopy">
+    <p class="legal"><strong>Merci pour votre achat à bientôt!</strong> 
+    </p>
+   </div>
+
+  </div>
+
+ </center>
+</div><!--End InvoiceBot-->
+</div><!--End Invoice-->

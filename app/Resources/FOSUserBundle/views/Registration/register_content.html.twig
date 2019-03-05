@@ -1,0 +1,56 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain 'validators' %}
+
+<div class="container-login100" >
+    <div class="wrap-login100 p-t-85 p-b-20" style="background-color: transparent">
+{{ form_start(form, { 'action': path('fos_user_registration_register'), 'attr': { 'class': 'fos_user_registration_register' } }) }}
+
+
+
+
+
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+
+    {{ form_widget(form.username, { 'attr': {'class': "input100",'placeholder': "Username"} }) }}
+    <a style="color: red">{{ form_errors(form.username)}}</a>
+
+</div>
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+    {{ form_widget(form.email, { 'attr': {'class': "input100",'placeholder': "Email"} }) }}
+    <a style="color: red">{{ form_errors(form.email)}}</a>
+</div>
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+
+
+    {{ form_widget(form.plainPassword.first, { 'attr': {'class': "input100",'placeholder': "Password"} }) }}
+    <a style="color: red">{{ form_errors(form.plainPassword.first)}}</a>
+</div>
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+    {{ form_widget(form.plainPassword.second, { 'attr': {'class': "input100",'placeholder': "Confirm Password"} }) }}
+    <a style="color: red">{{ form_errors(form.plainPassword.second)}}</a>
+</div>
+
+<div class="wrap-input100 validate-input m-t-85 m-b-35" >
+    <ul>
+        {% for role in form.roles %}
+            <li>
+                {{ form_row(role) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+<div>
+    <input class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4" type="submit" value="{{ 'registration.submit'|trans }}" />
+</div>
+
+{{ form_end(form) }}
+    </div>
+</div>

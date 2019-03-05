@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+  <!-- Content page -->
+  <section class="bgwhite p-t-55 p-b-65">
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+
+     </div>
+     <div class="row">
+         {% for modele in modeles %}
+          <div class="col 6 m4">
+           <div class="card-panel hoverable">
+            <div class="card">
+             <img class="card-img-top responsive-img" src="{{ asset("dist/img/Events.jpg") }}" alt="Card image cap">
+             <div class="card-content">
+              <div class="d-flex no-block align-items-center m-b-15">
+               <span><i ></i> {{ modele.nomEvenement }}</span>
+               <div class="ml-auto">
+                <a href="javascript:void(0)" class="link"><span class="block2-newprice m-text8 p-r-5"><i ></i></i>  Jusqu'au {{ modele.dateFin |date('Y-m-d')}}</a>
+               </div>
+              </div>
+
+              <span class="">
+										{{ modele.description }}
+									</span>
+              <span >
+           <td><a href="{{path("sendMail")}}"><input type="submit" name="ajouter" value="participer à un événement"class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4"></a></td>
+									</span>
+             </div>
+            </div>
+           </div>
+          </div>
+         {% else %}
+          <tr>
+           <td colspan="3">No posts found</td>
+          </tr>
+         {% endfor %}
+     </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+ {% endblock home %}

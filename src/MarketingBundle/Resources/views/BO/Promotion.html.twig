@@ -1,0 +1,80 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        <a href="{{path("Read")}}">
+          <i class="fa fa-pie-chart"></i><span>Promotion</span>
+        </a>
+
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"></li>
+
+      </ol>
+
+
+        {{ form_start(form) }}
+
+      <center>
+
+
+          <img src="{{ asset ("dist/img/a2.png")}}" ><br><br><br>
+
+        <legend > AJOUTER promotion </legend>
+        <script src="{{ asset("bower_components/fastclick/lib/ajouter_pro.js")}}"></script>
+      <table border="0">
+      <tr>
+        <td> nomPromotion: </td><td> {{ form_widget(form.nomPromotion) }}</td></tr>
+        <td> datedebut: </td><td> {{ form_widget(form.dateDebut) }}</td></tr>
+
+
+      <tr> <td> dateFin:</td><td> {{ form_widget(form.dateFin) }} </td></tr>
+      <tr> <td>pourcentage: </td><td>{{ form_widget(form.pourcentage) }} </td></tr>
+      <tr><td> produit: </td><td>{{ form_widget(form.produit) }} </td>
+      <tr>
+        <td></td>
+
+        <td><input type="submit" name="ajouter"  class="btn btn-primary btn-block margin-bottom" onclick="compare()">  </td>
+      </tr>
+
+
+      <a href="{{path("Read")}}">
+        </a>
+
+      </table>
+      </center>
+
+        {{ form_end(form) }}
+
+
+        <script type="text/javascript">
+
+            function compare(dateTimeA, dateTimeB) {
+                var dateTimeA = moment(dateTimeA,'dateDebut');
+                var dateTimeB = moment(dateTimeB,'dateFin');
+
+
+                if (dateTimeB > dateTimeB) return 1;
+                else if (dateTimeA < dateTimeB) return -1;
+                else return 0;
+
+                alert(compare("dateDebut", "dateFin"));
+            }
+
+
+        </script>
+    </section>
+
+    <!-- Main content -->
+
+    <!-- /.content -->
+  </div>
+
+  <!-- /.content-wrapper -->
+ {% endblock %}

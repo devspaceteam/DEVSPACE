@@ -1,0 +1,43 @@
+{% extends "base2.html.twig" %}
+ {% block home %}
+
+  <div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+       <h1>
+            evenement
+           <small><a href="{{path("create_even")}}">retour</a></small>
+       </h1>
+    <ol class="breadcrumb">
+     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+     <li class="active">Mailbox</li>
+    </ol>
+   </section>
+   <center>
+    <legend > AFFICHAGE Evenement </legend> <br><br><br>
+    <table>
+     <tr>
+      <table style="width: 25cm" >
+       <tr><th>nomEvenement</th><th>dateDebut</th><th>dateFin</th><th >modifier</th><th >supprimer</th></tr>
+          {% for modele in modeles %}
+
+           <td >  {{ modele.nomEvenement}}</td>
+           <td >  {{ modele.dateDebut|date}}</td>
+           <td > {{ modele.dateFin|date}}</td>
+
+           <td><a href="{{ path('updateeve',{'id':modele.nomEvenement}) }}"> <img src="{{ asset ("dist/img/refresh-button.png")}}" ></a> </td>
+           <td><a href="{{ path('deleteeve',{'id':modele.nomEvenement}) }}"><img src="{{ asset ("dist/img/rubbish-bin.png")}}" ></a> </td>
+
+
+
+
+
+           </tr>{% endfor %}
+      </table>
+   </center>
+   <!-- Main content -->
+
+   <!-- /.content -->
+  </div>
+
+  {% endblock %}

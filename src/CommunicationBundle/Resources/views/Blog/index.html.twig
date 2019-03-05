@@ -1,0 +1,156 @@
+{% block blog %}
+
+{% endblock blog %}
+
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/material-press/html/ltr/page-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Feb 2019 10:17:01 GMT -->
+<head>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("profile/assets/images/favicon.png") }}">
+    <link href="{{ asset("profile/dist/css/style.css") }}" rel="stylesheet">
+
+
+    <!-- Bootstrap & FontAwesome & Entypo CSS -->
+    <link href="{{ asset("profile/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" href="{{ asset("profile/css/font-awesome-ie7.min.css") }}"><![endif]-->
+    <link href="{{ asset("profile/css/font-entypo.css") }}" rel="stylesheet" type="text/css">
+
+    <!-- Fonts CSS -->
+    <link href="{{ asset("profile/css/fonts.css") }}"  rel="stylesheet" type="text/css">
+    <!-- This page CSS -->
+    <!-- This page CSS -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--===========================================PROFILE HEAD========================================-->
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% block bodyBlog %}
+<div class="page-titles">
+
+
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Post Detail</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="{{path("pepiniere_homepage")}}" class="breadcrumb"><i class="large material-icons">arrow_back</i> Go to App</a>
+        </div>
+        {% if  is_granted('ROLE_ADMIN') or is_granted('ROLE_AGRICULTEUR') or is_granted('ROLE_ENTREPRISE') %}
+            <div class="custom-breadcrumb ml-right">
+                <a href="{{path("pepiniere_homepage2")}}" class="breadcrumb"><i class="large material-icons">arrow_back</i> Go to DashBord</a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="count">
+        {{ pagination.getTotalItemCount }} Posts Count
+    </div>
+
+
+</div>
+{#<table>#}
+    {#<tr>#}
+        {#<td>Id</td>#}
+        {#<td>Title</td>#}
+        {#<td>CreatedAt</td>#}
+    {#</tr>#}
+
+    {#{% for c in comments %}#}
+
+        {#<tr>#}
+            {#<td>{{ c.id }}</td>#}
+            {#<td><a href="{{ path('blog_show', {'id':c.id}) }}">{{ c.title }}</a></td>#}
+            {#<td>{{ c.createdAt|date('Y/m/d H:i') }}</td>#}
+            {#<td>{{ c.nb[0].c}}</td>#}
+        {#</tr>#}
+    {#{% else %}#}
+        {#<tr>#}
+            {#<td colspan="3">No posts found</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+{#</table>#}
+{#<div>#}
+    {#<a href="{{ path('blog_new') }}">add post</a>#}
+{#</div>#}
+
+
+
+
+
+        <div class="row">
+            {% for c in comments %}
+            <div class="col 6 m4">
+                <div class="card-panel hoverable">
+                    <div class="card">
+                        <img class="card-img-top responsive-img" src="{{ asset("profile/assets/images/big/img5.jpg") }}" alt="Card image cap">
+                        <div class="card-content">
+                            <div class="d-flex no-block align-items-center m-b-15">
+                                <span><i class="ti-calendar"></i> {{ c.createdAt|date('Y/m/d H:i') }}</span>
+                                <div class="ml-auto">
+                                    <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> {{ c.nb[0].c}} Comments</a>
+                                </div>
+                            </div>
+                            <h5><a href="{{ path('blog_show', {'id':c.id}) }}">{{ c.title }}</a></h5>
+                            <p class="m-b-0 m-t-10">{{ c.body }}</p>
+                            <a href="{{ path('blog_show', {'id':c.id}) }}"> <button class="waves-effect waves-light btn btn-round indigo m-t-20">Read more</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <tr>
+                    <td colspan="3">No posts found</td>
+                </tr>
+            {% endfor %}
+        </div>
+
+
+
+
+
+     <!--============================================================================================-->
+
+    <a href="#" data-target="right-slide-out" class="sidenav-trigger right-side-toggle btn-floating btn-large waves-effect waves-light red cyan pulse"><i class="material-icons">arrow_upward</i></a>
+    <a href="{{ path('blog_new') }}" data-target="right-slide-out" class="sidenav-trigger right-side-toggle btn-floating btn-large waves-effect waves-light red pulse"><i class="material-icons">add</i></a>
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="{{ asset("profile/assets/libs/jquery/dist/jquery.min.js") }}"></script>
+    <script src="{{ asset("profile/dist/js/materialize.min.js") }}"></script>
+    <script src="{{ asset("profile/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js") }}"></script>
+    <!-- ============================================================== -->
+    <!-- Apps -->
+    <!-- ============================================================== -->
+    <script src="{{ asset("profile/dist/js/app.js") }}"></script>
+    <script src="{{ asset("profile/dist/js/app.init.js") }}"></script>
+    <script src="{{ asset("profile/dist/js/app-style-switcher.js") }}"></script>
+    <!-- ============================================================== -->
+    <!-- Custom js -->
+    <!-- ============================================================== -->
+    <script src="{{ asset("profile/dist/js/custom.min.js") }}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+
+
+    </body>
+    </html>
+
+
+
+{% endblock bodyBlog %}

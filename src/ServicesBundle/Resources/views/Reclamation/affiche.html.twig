@@ -1,0 +1,122 @@
+{% extends "base.html.twig" %}
+
+ {% block home %}
+
+
+  <!-- Title Page -->
+  <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url({{ asset("SERVICES/img/feedback/feedback1.png") }});">
+   <h5 class=" t-center">
+    <br><br><br>
+    <br>
+    Votre Avis est important pour nous
+   </h5>
+  </section>
+
+  <!-- content page -->
+  <section class="bgwhite p-t-66 p-b-38">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-4 p-b-30">
+      <div class="hov-img-zoom">
+
+         <br>
+         <br>
+
+
+
+        <a href="{{ path("AddReclamation",{"type":"jardinier"}) }}">
+            <button  class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4"  >
+                 Réclamer un jardinier
+            </button>
+        </a>
+
+         <br>
+
+         <a href="{{ path("AddReclamation",{"type":"entreprise"}) }}">
+            <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                Réclamer une entreprise
+            </button>
+         </a>
+
+         <br>
+
+          <a href="{{ path("AddReclamation",{"type":"agriculteur"}) }}">
+              <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                    Réclamer un agriculteur
+              </button>
+          </a>
+
+         <br>
+
+         <a href="{{ path("AddReclamation",{"type":"utilisateur"}) }}">
+            <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                Réclamer un autre utilisateur
+            </button>
+         </a>
+         <br>
+
+          <a href="{{ path("AddOtherReclamation",{"type":"Autre"}) }}">
+              <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                    Autre
+               </button>
+          </a>
+
+
+      </div>
+     </div>
+
+     <div class="col-md-8 p-b-30">
+      <h3 class="m-text26 p-t-15 p-b-16">
+       Suggestions & Réclamations
+      </h3>
+
+         Nous vous remercions de nous envoyer vos suggestions, vos observations ou vos réclamations.
+          <br><br>
+
+
+      <div class="bo13 p-l-29 m-l-9 p-b-10">
+       <p class="p-b-11">
+
+       </p>
+
+       <span class="s-text7">
+           <h5>
+            vous pouvez consulter votre liste de reclamation
+			Au cas où vous désirez de modifier ou annuler votre réclamation ou suggestions,
+               </h5>
+           <br>
+
+
+
+       </span>
+          <div style="width: 50%;padding-left: 10%" >
+              <a href="{{ path("fos_user_profile_show") }}">
+                    <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4"  >
+                        Consulter Profil
+                    </button>
+              </a>
+          </div>
+      </div>
+         <br><br><br><br>
+         Nous nous engageons de solutionner correctement et rapidement les problèmes signalés.
+     </div>
+    </div>
+   </div>
+  </section>
+
+
+
+
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+ {% endblock home %}

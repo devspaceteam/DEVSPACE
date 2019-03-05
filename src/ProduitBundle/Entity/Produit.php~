@@ -1,0 +1,311 @@
+<?php
+
+namespace ProduitBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit")
+ * @ORM\Entity(repositoryClass="ProduitBundle\Repository\ProduitRepository")
+ *
+ */
+class Produit
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->User;
+    }
+
+    /**
+     * @param mixed $User
+     */
+    public function setUser($User)
+    {
+        $this->User = $User;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PepiniereBundle\Entity\User")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+
+    private $User;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
+
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="categorie", type="integer")
+     */
+    private $categorie;
+    /**
+     *
+     *
+     * @var File
+     */
+    private $devisFile1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $devisName1;
+
+    /**
+     *
+     *
+     * @var File
+     */
+    private $devisFile2;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $devisName2;
+
+    /**
+     *
+     *
+     * @var File
+     */
+    private $devisFile3;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $devisName3;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Produit
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param float $prix
+     *
+     * @return Produit
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set devisName1
+     *
+     * @param string $devisName1
+     *
+     * @return Produit
+     */
+    public function setDevisName1($devisName1)
+    {
+        $this->devisName1 = $devisName1;
+    
+        return $this;
+    }
+
+    /**
+     * Get devisName1
+     *
+     * @return string
+     */
+    public function getDevisName1()
+    {
+        return $this->devisName1;
+    }
+
+    /**
+     * Set devisName2
+     *
+     * @param string $devisName2
+     *
+     * @return Produit
+     */
+    public function setDevisName2($devisName2)
+    {
+        $this->devisName2 = $devisName2;
+    
+        return $this;
+    }
+
+    /**
+     * Get devisName2
+     *
+     * @return string
+     */
+    public function getDevisName2()
+    {
+        return $this->devisName2;
+    }
+
+    /**
+     * Set devisName3
+     *
+     * @param string $devisName3
+     *
+     * @return Produit
+     */
+    public function setDevisName3($devisName3)
+    {
+        $this->devisName3 = $devisName3;
+    
+        return $this;
+    }
+
+    /**
+     * Get devisName3
+     *
+     * @return string
+     */
+    public function getDevisName3()
+    {
+        return $this->devisName3;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Produit
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}
